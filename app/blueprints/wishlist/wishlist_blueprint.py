@@ -9,32 +9,36 @@ def get_wishlist():
     try:
         usuario = session ['usuario'] 
         items = get_all_items(usuario['id'])
-        return jsonify(items), 200
+        print (items)
+        return render_template('wishlist/ver_wishlist.html', wishlist=items)
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
 @wishlist_bp.route('/wishlist', methods=['POST'])
 def add_to_wishlist():
     data = request.json
-    item_name = data.get('item_name')
-    description = data.get('description', '')
+    producto_id = data.get('producto_id')
 
-    if not item_name:
-        return jsonify({"error": "El campo 'item_name' es obligatorio"}), 400
+    if not producto_id:
+        return jsonify({"error": "El campo 'producto_id' es obligatorio"}), 400
 
     try:
-        item_id = add_item(item_name, description)
-        return jsonify({"message": "Elemento agregado exitosamente", "id": item_id}), 201
+        usuario = session ['usuario'] 
+        row_id = add_item(usuario['id'], producto_id)
+        return jsonify({"message": "Elemento agregado exitosamente", "id": row_id}), 201
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
 @wishlist_bp.route('/wishlist/<int:item_id>', methods=['DELETE'])
 def delete_from_wishlist(item_id):
+    print(f"Eliminando item con id {item_id}") 
     try:
         rows_deleted = delete_item(item_id)
         if rows_deleted == 0:
             return jsonify({"error": "Elemento no encontrado"}), 404
-
         return jsonify({"message": "Elemento eliminado exitosamente"}), 200
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+
+
+

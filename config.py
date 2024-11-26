@@ -1,4 +1,4 @@
-HEADERS = { 'X-Master-Key' : '$2a$10$CxhpjsSuncnI69.51ic/0.fJ4IwVeURoTQP9wfCtQjB/8GLjC627S' }
+HEADERS = { 'X-Master-Key' : '$2a$10$06hXF.R1gT97wo5NO3kWDeT8XyL.Qy27jsLJoLWeahNCrAEh6d/P.' }
 
 JSONBIN_URL_USUARIOS = 'https://api.jsonbin.io/v3/b/6741d993e41b4d34e4593a06'
 JSONBIN_URL_PRODUCTOS = 'https://api.jsonbin.io/v3/b/6741d95ead19ca34f8cef67c'

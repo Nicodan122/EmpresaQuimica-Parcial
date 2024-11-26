@@ -7,9 +7,12 @@
     <h2 class="text-center mb-4">Bienvenido a Nuestra Tienda</h2>
 
     <div class="d-flex justify-content-end mb-3">
-        <a href="{{ url_for('inicio.ver_carrito') }}" class="btn btn-success position-relative" id="btnVerCarrito">
+        <a href="{{ url_for('inicio.ver_carrito') }}" class="btn btn-success position-relative mr-2" id="btnVerCarrito">
             Ver Carrito
             <span class="badge badge-danger position-absolute top-0 start-100 translate-middle" id="carritoCantidad" style="display: none;">0</span>
+        </a>
+        <a href="{{ url_for('wishlist.get_wishlist') }}" class="btn btn-primary" id="btnVerWishlist">
+            Ver WishList
         </a>
     </div>
 
@@ -34,6 +37,11 @@
                     <div class="mt-auto">
                         <button class="btn btn-primary mt-3 agregar-carrito" data-id="{{ producto.id }}" data-precio="{{ producto.precio }}">
                             <i class="fas fa-shopping-cart"></i> Agregar al Carrito
+                        </button>
+                    </div>
+                    <div class="mt-auto">
+                        <button class="btn btn-primary mt-3 agregar-carrito" data-id="{{ producto.id }}" data-precio="{{ producto.precio }}">
+                            <i class="fas fa-heart"></i> WishList
                         </button>
                     </div>
                 </div>

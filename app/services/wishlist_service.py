@@ -6,9 +6,10 @@ def get_all_items(usuario_id):
     conn = None
     cursor = None
     try:
+        print (usuario_id)
         conn = mysql.connector.connect(**db_config)
         cursor = conn.cursor(dictionary=True)
-        cursor.execute("SELECT * FROM wishlist WHERE usuario_id = %s", (usuario_id))
+        cursor.execute("SELECT * FROM wishlist WHERE usuario_id = %s", (usuario_id,))
         result = cursor.fetchall()
         return result
     finally:
